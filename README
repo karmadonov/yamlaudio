@@ -1,3 +1,4 @@
+
 YAML tags for audio files
 =========================
 
@@ -51,18 +52,18 @@ Recommended tags
 +============+===============+================================================+ 
 | file       | file path     | A path to a file containing audio data, and to |
 |            |               | which subsequent commands apply, equivalent to |
-|            |               | FILE in cue sheets e.g., 'the_best_of.flac'    | 
+|            |               | FILE in cue sheets e.g., the_best_of.flac      | 
 +------------+---------------+------------------------------------------------+ 
 | track      | integer       | A number between 01 and 99, indicating         |
 |            |               | the track number., equivalent to TRACK         |
 |            |               | in cue sheets e.g., 12                         |
 +------------+---------------+------------------------------------------------+ 
-| index      | time (*)      | The start point (index 01) for each track,     |
+| index      | time [*]_     | The start point (index 01) for each track,     |
 |            |               | time-wise (MM:SS:FF format)., equivalent to    |
 |            |               | INDEX 01 in cue sheets e.g., 02:34:50          |
 +------------+---------------+------------------------------------------------+ 
 
-(*) - mm:ss:ff – time in minutes, seconds, and frames (75 frames/second).
+.. [*] mm:ss:ff – time in minutes, seconds, and frames (75 frames/second).
 
 Popular tags
 ************
@@ -75,18 +76,18 @@ Popular tags
 +------------+---------------+------------------------------------------------+ 
 | cdtextfile | file path     | A path to a file containing CD-Text info,      |
 |            |               | equivalent to CDTEXTFILE in cue sheets         |
-|            |               | e.g., "DISC.CDT"                               |
+|            |               | e.g., DISC.CDT                                 |
 +------------+---------------+------------------------------------------------+ 
 | flags      | string        | Per-track subcode flag(s), equivalent to FLAGS |
 |            |               | in cue sheets e.g., DCP2, 4CH, PRE, SCMS       |
 +------------+---------------+------------------------------------------------+ 
 | ISRC       | string        | Per-track International Standard Recording Code|
 |            |               | equivalent to ISRC in cue sheets e.g.,         |
-|            |               | "ABCDE1234567"                                 |
+|            |               | ABCDE1234567                                   |
 +------------+---------------+------------------------------------------------+
 | artist     | string        | Per-disc or per-track performer name for       |
 |            |               | CD-Text data, equivalent to PERFORMER in       |
-|            |               | cue sheets e.g., "Fabrizio Paterlini"          |
+|            |               | cue sheets e.g., Fabrizio Paterlini            |
 +------------+---------------+------------------------------------------------+
 | gap        | time          | Commands specify the pre-gap of a track,       |
 |            |               | equivalent to INDEX 00 in cue sheets e.g.,     |
@@ -102,13 +103,55 @@ Popular tags
 +------------+---------------+------------------------------------------------+
 | author     | string        | Per-disc or per-track songwriter name for      |
 |            |               | CD-Text data, equivalent to SONGWRITER         |
-|            |               | in cue sheets e.g., "Chris Martin"             |
+|            |               | in cue sheets e.g., Chris Martin               |
 +------------+---------------+------------------------------------------------+
 | title      | string        | Title of disc or track, equivalent to TITLE    |
-|            |               | in cue sheets e.g., "We Played Some Open"      |
+|            |               | in cue sheets e.g., We Played Some Open        |
 +------------+---------------+------------------------------------------------+
 
 Useful Tags
 ***********
++------------+---------------+------------------------------------------------+ 
+| Tag        | Format        | Description                                    | 
++============+===============+================================================+ 
+| tags       | list          | Useful genre tags, e.g.,                       |
+|            |               | [classical, neoclassical, piano]               |
+|            |               | (firs tag converted to the REM GENRE in cue)   |
++------------+---------------+------------------------------------------------+ 
+|release_date| date or year  | Release date of the disc, e.g.,                |
+|            |               | 2009-09-20 or 2009                             |
+|            |               | (converted to the year in REM DATE in the cue) |
++------------+---------------+------------------------------------------------+
+| discid     | string        | Disc ID, e.g., 34103B15                        |
+|            |               | (converted to the REM DISCID in the cue)       |
++------------+---------------+------------------------------------------------+ 
+| cover      | file path     | A path to a file containing cover image e.g.,  |
+|            |               | the_best_of.jpg                                | 
++------------+---------------+------------------------------------------------+ 
+
+...and many other tags, be free!
+
+YAML tags tools
+---------------
+
+- **cue2json** - convert cue sheet file to JSON.
+- **cue2yaml** - convert cue sheet file to YAML.
+- **yaml2cue** - convert YAML file to cue sheet.
+- **yaml2json** - convert YAML file to JSON.
+
+Some examples::
+
+    cue2json old_file.json > new_file.yaml
+    yaml2json yaml_file.yaml > dump.json
+
+Requirements:
+    - Python 3 - http://python.org/
+    - pyyaml - http://pyyaml.org/
+    - jinja2 - http://jinja.pocoo.org/
 
 
+Useful links
+------------
+- http://digitalx.org/cue-sheet/ - information on the cue sheet pages was taken from the helpfile of CDRWIN.
+- http://wiki.hydrogenaudio.org/index.php?title=Cue_sheet - information on the cue sheet from Hydrogenaudio.
+- http://www.yaml.org/ - The Official YAML Web Site.
