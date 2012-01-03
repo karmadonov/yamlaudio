@@ -11,8 +11,12 @@ def dthandler(obj):
         return None
 
 
-if __name__ == '__main__':
+def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
         yamldict = yaml.load(file.read())
         print(json.dumps(yamldict, default=dthandler))
+
+
+if __name__ == '__main__':
+    main()

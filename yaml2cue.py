@@ -59,8 +59,12 @@ def dict2cue(yamldict):
     return template.render(data=cuedict)
 
 
-if __name__ == '__main__':
+def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
         yamldict = yaml.load(file.read())
         print(dict2cue(yamldict))
+
+
+if __name__ == '__main__':
+    main()

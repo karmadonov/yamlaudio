@@ -1,4 +1,5 @@
 
+
 YAML tags for audio files
 =========================
 
@@ -148,7 +149,15 @@ Requirements:
     - Python 3 - http://python.org/
     - pyyaml - http://pyyaml.org/
     - jinja2 - http://jinja.pocoo.org/
+    
+Installation
+************
 
+::
+
+        git clone git@github.com:0xKirill/yamlaudio.git
+        cd yamlaudio
+        python3 setup.py install
 
 Useful links
 ------------
