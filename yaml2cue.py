@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 
 import sys
+import os
 import datetime
 import yaml
 from jinja2 import Template
@@ -54,7 +55,7 @@ def dict2cue(yamldict):
             cuefile['type'] = 'WAVE'
         cuefile['tracks'] = file['tracks']
         cuedict['files'].append(cuefile)
-    with open('templates/album.cue') as cue:
+    with open(os.path.dirname(__file__) + 'templates/album.cue') as cue:
         template = Template(cue.read())
     return template.render(data=cuedict)
 
@@ -62,7 +63,7 @@ def dict2cue(yamldict):
 def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
-        yamldict = yaml.load(file.read())
+        yamldict = yaml.load(file.read().decode('utf-8'))
         print(dict2cue(yamldict))
 
 

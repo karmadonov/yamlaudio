@@ -16,6 +16,8 @@ setup(name='yamlaudio',
       py_modules=['cue2json', 'cue2yaml', 'yaml2cue', 'yaml2json',
                   'tools.cuetool'],
       namespace_packages=[],
+      data_files = [('templates', ['templates/album.yaml',
+                    'templates/album.cue']),],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
