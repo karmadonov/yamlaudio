@@ -8,7 +8,7 @@ def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
         data = cuetool.loads(file.read().decode('utf-8'))
-    print(json.dumps(data))
+    print(json.dumps(data).encode('utf-8'))
 
 
 if __name__ == '__main__':

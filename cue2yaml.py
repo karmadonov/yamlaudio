@@ -11,7 +11,7 @@ def main():
         data = cuetool.loads(file.read().decode('utf-8'))
     with open(os.path.dirname(__file__) + '/templates/album.yaml') as yaml:
         template = Template(yaml.read())
-    print(template.render(data=data))
+    print(template.render(data=data).encode('utf-8'))
 
 
 if __name__ == '__main__':

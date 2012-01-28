@@ -64,7 +64,7 @@ def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
         yamldict = yaml.load(file.read().decode('utf-8'))
-        print(dict2cue(yamldict))
+        print(dict2cue(yamldict).encode('utf-8'))
 
 
 if __name__ == '__main__':

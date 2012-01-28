@@ -15,7 +15,7 @@ def main():
     filename = sys.argv[1]
     with open(filename, 'r') as file:
         yamldict = yaml.load(file.read().decode('utf-8'))
-        print(json.dumps(yamldict, default=dthandler))
+        print(json.dumps(yamldict, default=dthandler).encode('utf-8'))
 
 
 if __name__ == '__main__':
