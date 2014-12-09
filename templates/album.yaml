@@ -7,8 +7,9 @@ discid:             {{ data.discid }}{% endif %}{% if data.catalog %}
 catalog:            {{ data.catalog }}{% endif %}{% if data.flags %}
 flags:              {{ data.flags }}{% endif %}{% if data.cdtextfile %}
 cdtextfile:         {{ data.cdtextfile }}{% endif %}
-{% for file in data.files %}
+
 files:
+{% for file in data.files %}
   - file:           {{ file.file }}
     tracks:
 {%- for track in file.tracks %}
